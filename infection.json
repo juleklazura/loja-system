@@ -1,0 +1,38 @@
+{
+    "timeout": 60,
+    "source": {
+        "directories": [
+            "app/Services",
+            "app/Repositories", 
+            "app/Http/Controllers",
+            "app/Http/Middleware"
+        ]
+    },
+    "logs": {
+        "text": "build/infection-log.txt",
+        "html": "build/infection-log.html",
+        "summary": "build/infection-summary.log",
+        "json": "build/infection-log.json",
+        "gitlab": "build/infection-gitlab.json",
+        "debug": "build/infection-debug.log",
+        "perMutator": "build/infection-per-mutator.md"
+    },
+    "tmpDir": "build/infection",
+    "phpUnit": {
+        "configDir": ".",
+        "customPath": "vendor/bin/phpunit"
+    },
+    "mutators": {
+        "@default": true,
+        "@function_signature": false,
+        "global-ignore": [
+            "IgnoreSourceCodeByRegex"
+        ]
+    },
+    "testFramework": "phpunit",
+    "bootstrap": "vendor/autoload.php",
+    "initialTestsPhpOptions": "-d memory_limit=1G",
+    "testFrameworkOptions": "--testsuite=Unit",
+    "minMsi": 70,
+    "minCoveredMsi": 80
+}

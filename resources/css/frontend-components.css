@@ -1,0 +1,745 @@
+/**
+ * ========================================
+ * FRONTEND COMPONENTS CSS MODULE
+ * ========================================
+ * 
+ * Modular CSS architecture for e-commerce frontend
+ * Organized by component type and functionality
+ */
+
+/* ========================================
+   1. CSS DESIGN SYSTEM VARIABLES
+   ======================================== */
+:root {
+    /* Color Palette - Primary Colors */
+    --color-primary: #007bff;
+    --color-primary-hover: #0056b3;
+    --color-primary-light: rgba(0, 123, 255, 0.1);
+    
+    /* Color Palette - Secondary Colors */
+    --color-secondary: #6c757d;
+    --color-success: #28a745;
+    --color-danger: #dc3545;
+    --color-warning: #ffc107;
+    --color-info: #17a2b8;
+    
+    /* Color Palette - Neutral Colors */
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-dark: #212529;
+    --color-light: #f8f9fa;
+    --color-muted: #6c757d;
+    
+    /* Typography System */
+    --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family-secondary: 'Arial', sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    
+    /* Font Weights */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    
+    /* Spacing Scale */
+    --spacing-0: 0;
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 0.75rem;
+    --spacing-4: 1rem;
+    --spacing-5: 1.25rem;
+    --spacing-6: 1.5rem;
+    --spacing-8: 2rem;
+    --spacing-10: 2.5rem;
+    --spacing-12: 3rem;
+    --spacing-16: 4rem;
+    --spacing-20: 5rem;
+    
+    /* Border Radius Scale */
+    --radius-none: 0;
+    --radius-sm: 0.125rem;
+    --radius-base: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-full: 50%;
+    
+    /* Shadow Scale */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-base: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    
+    /* Transition Timing */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Z-Index Scale */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+    --z-toast: 9999;
+}
+
+/* ========================================
+   2. BASE COMPONENT STYLES
+   ======================================== */
+.component-base {
+    box-sizing: border-box;
+}
+
+.component-interactive {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.component-focus-ring:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   3. NAVIGATION COMPONENT SYSTEM
+   ======================================== */
+.navigation-container {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.navigation-brand {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.navigation-brand:hover {
+    color: var(--color-primary-hover);
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+.navigation-link {
+    position: relative;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-dark);
+    text-decoration: none;
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--radius-md);
+    transition: var(--transition-smooth);
+}
+
+.navigation-link:hover {
+    color: var(--color-primary) !important;
+    background-color: var(--color-primary-light);
+    transform: translateY(-1px);
+}
+
+.navigation-link--active {
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+}
+
+/* ========================================
+   4. PRODUCT CARD COMPONENT SYSTEM
+   ======================================== */
+.product-card-container {
+    background: var(--color-white);
+    border: none;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.product-card-container:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-2xl);
+}
+
+.product-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    aspect-ratio: 4/3;
+}
+
+.product-image-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+
+.product-card-container:hover .product-image-main {
+    transform: scale(1.05);
+    filter: brightness(1.1) saturate(1.2);
+}
+
+.product-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+    opacity: 0;
+    transition: var(--transition-normal);
+}
+
+.product-card-container:hover .product-image-overlay {
+    opacity: 1;
+}
+
+.product-content-area {
+    padding: var(--spacing-4);
+}
+
+.product-title {
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-lg);
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-2);
+    line-height: 1.4;
+}
+
+.product-price-current {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xl);
+    color: var(--color-success);
+}
+
+.product-price-original {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-sm);
+    color: var(--color-muted);
+    text-decoration: line-through;
+}
+
+/* ========================================
+   5. BADGE COMPONENT SYSTEM
+   ======================================== */
+.badge-counter-base {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 var(--spacing-1);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+}
+
+.badge-counter-base:hover {
+    transform: scale(1.1);
+}
+
+.badge-counter--cart {
+    top: -8px;
+    right: -8px;
+    background: var(--color-danger);
+}
+
+.badge-counter--wishlist {
+    top: -8px;
+    right: -8px;
+    background: #e91e63;
+}
+
+.badge-admin {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: var(--color-white);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-xl);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    margin-left: var(--spacing-2);
+    box-shadow: var(--shadow-sm);
+}
+
+.badge-status-online {
+    background: var(--color-success);
+}
+
+.badge-status-offline {
+    background: var(--color-muted);
+}
+
+.badge-promotion {
+    position: absolute;
+    top: var(--spacing-2);
+    right: var(--spacing-2);
+    background: var(--color-danger);
+    color: var(--color-white);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+}
+
+/* ========================================
+   6. FORM COMPONENT SYSTEM
+   ======================================== */
+.form-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-input-field {
+    width: 100%;
+    padding: var(--spacing-3) var(--spacing-4);
+    border: 1px solid #ced4da;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    transition: var(--transition-fast);
+    background-color: var(--color-white);
+}
+
+.form-input-field:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+    outline: none;
+}
+
+.form-input-field:invalid {
+    border-color: var(--color-danger);
+}
+
+.form-button-primary {
+    padding: var(--spacing-3) var(--spacing-6);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.form-button-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.form-button-primary:active {
+    transform: translateY(0);
+}
+
+.form-search-container {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    gap: var(--spacing-2);
+}
+
+/* ========================================
+   7. DROPDOWN COMPONENT SYSTEM
+   ======================================== */
+.dropdown-menu-enhanced {
+    border: none;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.dropdown-item-styled {
+    padding: var(--spacing-3) var(--spacing-4);
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.dropdown-item-styled:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateX(4px);
+}
+
+.dropdown-divider {
+    margin: var(--spacing-1) 0;
+    border-color: var(--color-light);
+}
+
+/* ========================================
+   8. NOTIFICATION SYSTEM
+   ======================================== */
+.notification-floating {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: var(--z-toast);
+    max-width: 350px;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-2xl);
+    animation: slideInFromRight 0.3s ease-out;
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification-success {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.notification-error {
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
+}
+
+.notification-warning {
+    background-color: var(--color-warning);
+    border-color: var(--color-warning);
+}
+
+.notification-info {
+    background-color: var(--color-info);
+    border-color: var(--color-info);
+}
+
+/* ========================================
+   9. LAYOUT COMPONENTS
+   ======================================== */
+.hero-section-background {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: var(--color-white);
+    padding: var(--spacing-20) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(255,255,255,.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+    opacity: 0.1;
+}
+
+.footer-main-section {
+    background-color: #2c3e50;
+    color: var(--color-white);
+    padding: var(--spacing-12) 0;
+}
+
+.category-card-container {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.category-card-container:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+/* ========================================
+   10. PROMOTIONS TICKER
+   ======================================== */
+.promotions-ticker-container {
+    background: linear-gradient(90deg, var(--color-warning), #ffcd3c);
+    color: var(--color-dark);
+    padding: var(--spacing-2) 0;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: var(--shadow-sm);
+}
+
+.promotions-ticker-content {
+    display: inline-block;
+    animation: scrollHorizontalLeft 60s linear infinite;
+    font-weight: var(--font-weight-semibold);
+}
+
+.promotions-ticker-content:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrollHorizontalLeft {
+    0% {
+        transform: translate3d(20%, 0, 0);
+    }
+    100% {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+.promotion-item-individual {
+    margin-right: var(--spacing-12);
+    display: inline-block;
+}
+
+.promotion-visual-separator {
+    margin: 0 var(--spacing-12);
+    display: inline-block;
+    opacity: 0.7;
+}
+
+.promotion-icon-fire {
+    color: var(--color-danger);
+    margin-right: var(--spacing-2);
+}
+
+/* ========================================
+   11. UTILITY CLASSES
+   ======================================== */
+.cursor-interactive {
+    cursor: pointer;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.transition-smooth {
+    transition: var(--transition-smooth);
+}
+
+.transition-fast {
+    transition: var(--transition-fast);
+}
+
+.shadow-elevated {
+    box-shadow: var(--shadow-xl);
+}
+
+.shadow-floating {
+    box-shadow: var(--shadow-2xl);
+}
+
+.border-none {
+    border: none;
+}
+
+.border-light {
+    border: 1px solid var(--color-light);
+}
+
+.rounded-smooth {
+    border-radius: var(--radius-xl);
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.d-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gap-small {
+    gap: var(--spacing-2);
+}
+
+.gap-medium {
+    gap: var(--spacing-4);
+}
+
+.gap-large {
+    gap: var(--spacing-6);
+}
+
+/* ========================================
+   12. RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 1200px) {
+    .form-search-container {
+        width: 250px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-section-background {
+        padding: var(--spacing-16) 0;
+    }
+    
+    .product-card-container:hover {
+        transform: translateY(-4px);
+    }
+}
+
+@media (max-width: 768px) {
+    .form-search-container {
+        width: 100%;
+        margin-top: var(--spacing-4);
+    }
+    
+    .navbar-nav {
+        margin-top: var(--spacing-4);
+    }
+    
+    .promotions-ticker-container {
+        padding: var(--spacing-2) 0;
+        font-size: var(--font-size-sm);
+    }
+    
+    .promotions-ticker-content {
+        animation-duration: 45s;
+    }
+
+    .product-card-container:hover {
+        transform: none;
+    }
+
+    .category-card-container:hover {
+        transform: scale(1.02);
+    }
+    
+    .notification-floating {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section-background {
+        padding: var(--spacing-12) 0;
+    }
+
+    .badge-counter-base {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+    }
+    
+    .navigation-brand {
+        font-size: var(--font-size-xl);
+    }
+    
+    .product-content-area {
+        padding: var(--spacing-3);
+    }
+}
+
+/* ========================================
+   13. DARK MODE SUPPORT (Optional)
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-white: #1a1a1a;
+        --color-dark: #ffffff;
+        --color-light: #2d2d2d;
+        --color-muted: #a0a0a0;
+    }
+}
+
+/* ========================================
+   14. PRINT STYLES
+   ======================================== */
+@media print {
+    .navigation-container,
+    .promotions-ticker-container,
+    .footer-main-section {
+        display: none !important;
+    }
+    
+    .product-card-container {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+
+/* ========================================
+   15. ACCESSIBILITY IMPROVEMENTS
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .promotions-ticker-content {
+        animation: none;
+        transform: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .navigation-link:hover {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+    }
+    
+    .product-card-container {
+        border: 2px solid var(--color-dark);
+    }
+}
+
+/* Focus indicators for keyboard navigation */
+.navigation-link:focus-visible,
+.form-input-field:focus-visible,
+.form-button-primary:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
